@@ -11,14 +11,8 @@ phases:
       - docker pull grafana/k6
   build:
     commands:
-      - echo Run e2e-test.js
-      - docker run -i -e K6_CLOUD_TOKEN=${K6_CLOUD_TOKEN} grafana/k6 cloud - <scripts/e2e-test.js
-      - echo Run peak-test.js
-      - docker run -i -e K6_CLOUD_TOKEN=${K6_CLOUD_TOKEN} grafana/k6 cloud - <scripts/peak-test.js
-      - echo Run stress-test.js
-      - docker run -i -e K6_CLOUD_TOKEN=${K6_CLOUD_TOKEN} grafana/k6 cloud - <scripts/stress-test.js
-      - echo Run volume-test.js
-      - docker run -i -e K6_CLOUD_TOKEN=${K6_CLOUD_TOKEN} grafana/k6 cloud - <scripts/volume-test.js
+      - echo Run performance test
+      - docker run -i -e K6_CLOUD_TOKEN=${K6_CLOUD_TOKEN} grafana/k6 cloud - <scripts/cloud-test.js
   post_build:
     commands:
-      - echo Performance tests complete
+      - echo Performance test complete
